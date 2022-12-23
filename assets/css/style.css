@@ -1,14 +1,18 @@
 :root {
     --dark: black;
     --white: white;
-    --blue: rgb(55, 55, 181);
+    --blue: rgb(179, 152, 128);
+    --body-margin: 5px;
+    --body-padding: 5px;
+    --border-settings: 7px solid grey;
 }
 
 .container {
   display: grid;
-  height: 100vh;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr .2fr 1fr 1.2fr .8fr .8fr .8fr;
+  height: 200vh;
+  background-color: antiquewhite;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 7% 3% 10% 15% 30% 15% 15% 1%;
   grid-template-areas: 
     "header header header header header"
     "nav nav nav nav nav"
@@ -17,14 +21,11 @@
     "sidebar2 work1 work1 work1 work1"
     "sidebar2 work2 work2 work3 work3"
     "sidebar3 footer footer footer footer";
-  grid-gap: 0.2rem;
 }
 
 header {
   grid-area: header;
   justify-content: left;
-  margin: 0;
-  padding: 0;
   padding-left: 20px;
   color: var(--white);
   background-color: var(--blue);
@@ -34,7 +35,6 @@ header {
 }
 
 nav {
-  background-color: aliceblue;
   grid-area: nav;
 }
 
@@ -50,7 +50,7 @@ nav ul {
 }
 
 nav li a {
-  color: white;
+  color: var(--white);
   text-align: center;
   float: right;
   padding: 5px 16px;
@@ -59,7 +59,7 @@ nav li a {
 }
 
 nav li a:hover {
-  background-color: darkblue;
+  background-color: rgb(188, 138, 29);
 }
 
 #background {
@@ -69,54 +69,108 @@ nav li a:hover {
 
 img {
   width: 100%;
-  object-fit: contain;
+  height: 100%;
+  object-fit: fill;
 }
 
 main {
-  background-color: antiquewhite;
   grid-area: main;
+  padding: var(--body-padding);
+  margin: var(--body-margin);
+  border-left: var(--border-settings);
+  font-size: 20px;
 }
 
 #sidebar1 {
-  background-color: aqua;
   grid-area: sidebar1;
 }
 
 #sidebar2 {
-  background-color: aqua;
   grid-area: sidebar2;
-
 }
 
 #sidebar3 {
-  background-color: aqua;
   grid-area: sidebar3;
+}
 
+#sidebar1,
+#sidebar2,
+#sidebar3 {
+  padding-right: 20px;
+  font-style: italic;
+  color: #29627e;
+  font-size: 40px;
+  text-align: right;
+  padding: var(--body-padding);
+  margin: var(--body-margin);
 }
 
 #work1 {
-  background-color: rgb(136, 136, 237);
   grid-area: work1;
+  border-left: var(--border-settings);
 }
 
 #work2 {
-  background-color: azure;
   grid-area: work2;
+  border-left: var(--border-settings);
 }
 
 #work3 {
-  background-color: blanchedalmond;
   grid-area: work3;
 }
 
-#contact-me {
-  background-color: blueviolet;
-  grid-area: contact;
+#work1,
+#work2,
+#work3 {
+  position: relative;
+  overflow: hidden;
+  padding: var(--body-padding);
+  margin: var(--body-margin);
+}
+
+#work1 img,
+#work2 img,
+#work3 img {
+  filter: contrast(70%)
+}
+
+#work1 img:hover,
+#work2 img:hover,
+#work3 img:hover {
+  filter: contrast(100%);
+}
+
+#work1 p {
+  position: absolute;
+  background-color: antiquewhite;
+  color: black;
+  top: 393px;
+  font-size: 20px;
+}
+
+#work2 p,
+#work3 p {
+  position: absolute;
+  background-color: antiquewhite;
+  color: black;
+  top: 172px;
+  font-size: 20px;
 }
 
 footer {
-  background-color: bisque;
+  display: grid;
   grid-area: footer;
+  padding: var(--body-padding);
+  margin: var(--body-margin);
+  border-left: var(--border-settings);
+  text-align: center;
+  font-size: 20px;
+  justify-content: space-evenly;
+  line-height: 50px;
+}
+
+footer a {
+  justify-content: space-between;
 }
 
 @media screen and (max-width:550px) {
@@ -134,76 +188,17 @@ footer {
       "work3"
       "footer";
   }
+
   nav {
     float: none;
   }
-  
+
   #sidebar1,
   #sidebar2,
   #sidebar3 {
     height: 0;
     width: 0;
+    font-size: 0;
   }
 
 }
-
-  
-  aside {
-    padding-left: 0.5rem;
-    padding-right: 20px;
-    margin-right: 0.5rem;
-    float: left;
-    font-style: italic;
-    color: #29627e;
-    font-size: 50px;
-    text-align: right;
-  }
-  
-  #About-Me {
-    position: relative; 
-    top: -30px;
-    border-right: 7px solid grey;
-    height: 150px;
-    padding-right: 15px;
-  }
-
-  #Work {
-    position: relative; 
-    top: 50px;
-    border-right: 7px solid grey;
-    padding-right: 15px;
-  }
-
-  #Contact-Me {
-    position: relative; 
-    top: 500px;
-    border-right: 7px solid grey;
-    padding-right: 15px;
-  }
-
-  article {
-    position: relative;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;    
-  }
-
-  body {
-    background-color: rgb(237, 234, 234);
-  }
-
-  .work {
-    position: relative;
-    flex-wrap: wrap;
-    display: flex;
-  }
-
-  div a {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    font-size: 25px;
-  }
-
-
-
